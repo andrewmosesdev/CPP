@@ -1,15 +1,23 @@
+// Andrew Moses
+// Project 1
+// 01/22/23
+
 #include <iostream>
 using namespace std;
 
+// OOP specified in reqs
 class Clock
 {
+// no unnecessary access
 private:
     int hours;
     int minutes;
     int seconds;
     bool is24Hour;
 
+// necessary access
 public:
+    // constructor
     Clock(bool is24Hour)
     {
         this->is24Hour = is24Hour;
@@ -41,6 +49,7 @@ public:
         }
     }
 
+    // some of this could be dynamic, but unless time formats change probably fine to hardcode
     void displayTime()
     {
         cout << "*****************" << endl;
@@ -68,6 +77,7 @@ public:
     }
 };
 
+// static values, better to abstract out of main
 void generateMenu()
 {
     cout << "************************" << endl;
@@ -80,9 +90,11 @@ void generateMenu()
 
 int main()
 {
+    // initialize our clocks
     Clock clock12(false);
     Clock clock24(true);
 
+    // run until user wants to end program
     while (true)
     {
         generateMenu();
@@ -90,6 +102,7 @@ int main()
         int userChoice;
         cin >> userChoice;
 
+        // we're using numeric inputs, so switch is cleaner than if/if/if/if
         switch (userChoice)
         {
         case 1:
@@ -107,6 +120,7 @@ int main()
         case 4:
             return 0;
             break;
+        // some light validation
         default:
             cout << "Invalid Input, Please Try Again" << endl;
             break;
